@@ -666,14 +666,30 @@ export default function App() {
             <button style={css.retryBtn} onClick={reset}>← Back</button>
           </div>
 
-          {/* Live camera view */}
-          <LiveCamera
-            ref={cameraRef}
-            selectedStyle={selectedStyle}
-            color={selectedColor}
-            size={size}
-            nudge={nudge}
-          />
+          {/* Live camera view + capture button overlaid */}
+          <div style={{ position: 'relative' }}>
+            <LiveCamera
+              ref={cameraRef}
+              selectedStyle={selectedStyle}
+              color={selectedColor}
+              size={size}
+              nudge={nudge}
+            />
+            <button
+              onClick={handleCapture}
+              style={{
+                position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)',
+                width: 64, height: 64, borderRadius: '50%',
+                background: 'rgba(255,255,255,0.95)',
+                border: '4px solid rgba(255,255,255,0.5)',
+                boxShadow: '0 2px 16px rgba(0,0,0,0.4)',
+                cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 26, lineHeight: 1,
+              }}
+            >
+              📸
+            </button>
+          </div>
 
           {/* Same controls panel as result */}
           <div style={css.panel}>
@@ -716,13 +732,6 @@ export default function App() {
                 {selectedStyle.note}
               </div>
             )}
-          </div>
-
-          {/* Capture action */}
-          <div style={css.actions}>
-            <button style={css.downloadBtn} onClick={handleCapture}>
-              📸 Capture photo
-            </button>
           </div>
 
         </div>
