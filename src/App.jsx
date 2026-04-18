@@ -662,7 +662,7 @@ export default function App() {
 
           {/* Header */}
           <div style={css.header}>
-            <BindhiWordmark size={26} />
+            <span style={{ cursor: 'pointer' }} onClick={reset}><BindhiWordmark size={26} /></span>
             <button style={css.retryBtn} onClick={reset}>← Back</button>
           </div>
 
@@ -742,7 +742,7 @@ export default function App() {
 
           {/* Header */}
           <div style={css.header}>
-            <BindhiWordmark size={26} />
+            <span style={{ cursor: 'pointer' }} onClick={reset}><BindhiWordmark size={26} /></span>
             <button style={css.retryBtn} onClick={reset}>Try another photo</button>
           </div>
 
@@ -820,6 +820,15 @@ export default function App() {
             </button>
             <button style={css.shareBtn} onClick={handleShare}>
               Share
+            </button>
+          </div>
+          <div style={{ textAlign: 'center', paddingBottom: 24 }}>
+            <button onClick={reset} style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: '#9C8878', fontSize: 13, fontFamily: "'DM Sans', sans-serif",
+              textDecoration: 'underline', textUnderlineOffset: 3,
+            }}>
+              ← Start over
             </button>
           </div>
 
