@@ -165,21 +165,53 @@ export const BINDIS = [
   },
 ]
 
+// Draws a single vibhuti/ash stripe that bows upward to follow forehead curvature,
+// with opacity fading toward the tapered ends.
+function drawAshStripe(ctx, cx, cy, w, h, color) {
+  const bow = w * 0.055          // upward bow — ~5.5% of width
+  const taper = h * 0.9          // horizontal distance for rounded ends
+  const x0 = cx - w / 2, x1 = cx + w / 2
+
+  // Parse hex → r,g,b for gradient
+  const r = parseInt(color.slice(1, 3), 16)
+  const g = parseInt(color.slice(3, 5), 16)
+  const b = parseInt(color.slice(5, 7), 16)
+
+  ctx.save()
+
+  // Curved stripe path (top + bottom edges bow upward identically → parallel arcs)
+  ctx.beginPath()
+  ctx.moveTo(x0 + taper, cy - h / 2)
+  ctx.quadraticCurveTo(cx, cy - h / 2 - bow, x1 - taper, cy - h / 2) // top edge
+  ctx.quadraticCurveTo(x1 + taper * 0.4, cy, x1 - taper, cy + h / 2) // right cap
+  ctx.quadraticCurveTo(cx, cy + h / 2 - bow, x0 + taper, cy + h / 2) // bottom edge
+  ctx.quadraticCurveTo(x0 - taper * 0.4, cy, x0 + taper, cy - h / 2) // left cap
+  ctx.closePath()
+  ctx.clip()
+
+  // Horizontal gradient: transparent → opaque → opaque → transparent
+  const grad = ctx.createLinearGradient(x0, 0, x1, 0)
+  grad.addColorStop(0,    `rgba(${r},${g},${b},0)`)
+  grad.addColorStop(0.07, `rgba(${r},${g},${b},1)`)
+  grad.addColorStop(0.93, `rgba(${r},${g},${b},1)`)
+  grad.addColorStop(1,    `rgba(${r},${g},${b},0)`)
+  ctx.fillStyle = grad
+  ctx.fillRect(x0, cy - h / 2 - bow - 2, w, h + bow + 4)
+
+  ctx.restore()
+}
+
 export const TILAKS = [
   {
     id: 'T01', name: 'Tripundra',
     note: 'Three ash lines of Shaiva tradition — Lord Shiva\'s mark, worn across India',
     colors: ['#EFEFEA','#D4C5A9','#9CA3AF'],
     render: (ctx, x, y, s, color = '#EFEFEA') => {
-      // Anchor (x,y) = just above brow. Three lines span the forehead width.
-      // Lines are stacked upward from the anchor
       const lineH = s * 0.52, gap = s * 0.92
-      const offsets = [0, gap, gap * 2] // bottom line at anchor, then up
+      const offsets = [0, gap, gap * 2]
       offsets.forEach((dy, i) => {
         const w = s * (i === 1 ? 10.5 : 9.5)
-        ctx.beginPath()
-        ctx.roundRect(x - w/2, y - dy - lineH, w, lineH, lineH/2)
-        ctx.fillStyle = color; ctx.fill()
+        drawAshStripe(ctx, x, y - dy - lineH / 2, w, lineH, color)
       })
     }
   },
@@ -192,11 +224,10 @@ export const TILAKS = [
       const offsets = [0, gap, gap * 2]
       offsets.forEach((dy, i) => {
         const w = s * (i === 1 ? 10.5 : 9.5)
-        ctx.beginPath(); ctx.roundRect(x - w/2, y - dy - lineH, w, lineH, lineH/2)
-        ctx.fillStyle = color; ctx.fill()
+        drawAshStripe(ctx, x, y - dy - lineH / 2, w, lineH, color)
       })
-      // Red dot sits on the bottom (first) line centre
-      ctx.beginPath(); ctx.arc(x, y - lineH/2, s * 0.38, 0, Math.PI * 2)
+      // Red dot sits on the bottom line centre
+      ctx.beginPath(); ctx.arc(x, y - lineH / 2, s * 0.38, 0, Math.PI * 2)
       ctx.fillStyle = '#C0392B'; ctx.fill()
     }
   },
