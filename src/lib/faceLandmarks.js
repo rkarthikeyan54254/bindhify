@@ -16,10 +16,16 @@ const CHIN             = 152
 
 async function buildLandmarker(runningMode) {
   const vision = await FilesetResolver.forVisionTasks(WASM_URL)
+  // CPU for IMAGE mode is more reliable for complex photos (sunglasses, group shots)
+  // GPU for VIDEO mode keeps the live camera fast
+  const delegate = runningMode === 'VIDEO' ? 'GPU' : 'CPU'
   return FaceLandmarker.createFromOptions(vision, {
-    baseOptions: { modelAssetPath: MODEL_URL, delegate: 'GPU' },
+    baseOptions: { modelAssetPath: MODEL_URL, delegate },
     runningMode,
-    numFaces: 4,  // support group photos
+    numFaces: 4,
+    minFaceDetectionConfidence: 0.3,
+    minFacePresenceConfidence: 0.3,
+    minTrackingConfidence: 0.3,
   })
 }
 

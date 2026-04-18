@@ -246,7 +246,7 @@ export default function App() {
         detectGender(base64, mimeType),
       ])
       if (!result.faceDetected) {
-        setError("We couldn't find a face in this photo. Try a front-facing photo with good lighting.")
+        setError("We couldn't detect a face. For best results: use a single close-up photo, face the camera directly, and avoid sunglasses.")
         setPhase('error'); return
       }
       setDetection(result)
