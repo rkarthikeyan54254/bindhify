@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Outer glow -->
+  <circle cx="32" cy="32" r="30" fill="#C0392B" opacity="0.18"/>
+  <!-- Main bindi body -->
+  <circle cx="32" cy="32" r="24" fill="url(#bg)"/>
+  <!-- Specular highlight -->
+  <circle cx="22" cy="22" r="7" fill="rgba(255,255,255,0.22)"/>
+  <!-- Inner shine -->
+  <circle cx="32" cy="32" r="9" fill="#E8610A" opacity="0.55"/>
+  <defs>
+    <radialGradient id="bg" cx="38%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#E8610A"/>
+      <stop offset="100%" stop-color="#8B1A1A"/>
+    </radialGradient>
+  </defs>
+</svg>
