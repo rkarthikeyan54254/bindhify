@@ -19,7 +19,7 @@ async function buildLandmarker(runningMode) {
   return FaceLandmarker.createFromOptions(vision, {
     baseOptions: { modelAssetPath: MODEL_URL, delegate: 'GPU' },
     runningMode,
-    numFaces: 1,
+    numFaces: 4,  // support group photos
   })
 }
 
@@ -57,8 +57,12 @@ export function processLandmarks(pts) {
 export async function detectBindiPoint(imageElement) {
   if (!imageLandmarker) imageLandmarker = await buildLandmarker('IMAGE')
   const result = imageLandmarker.detect(imageElement)
-  if (!result.faceLandmarks?.length) return { faceDetected: false }
-  return processLandmarks(result.faceLandmarks[0])
+  if (!result.faceLandmarks?.length) return { faceDetected: false, faces: [] }
+
+  const faces = result.faceLandmarks.map(pts => processLandmarks(pts))
+  // Primary detection = largest face (widest faceWidth)
+  const primary = faces.reduce((a, b) => a.faceWidth > b.faceWidth ? a : b)
+  return { ...primary, faces }
 }
 
 export async function getVideoLandmarker() {

@@ -48,8 +48,15 @@ function SwatchCanvas({ style, size = 54 }) {
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     ctx.clearRect(0, 0, size, size)
-    const s = size * 0.18
-    style.render(ctx, size / 2, size / 2, s)
+    const isTilak = style.id?.startsWith('T')
+    if (isTilak) {
+      // Tilaks anchor from bottom and grow up — place anchor at 80% height
+      const s = size * 0.10
+      style.render(ctx, size / 2, size * 0.82, s)
+    } else {
+      const s = size * 0.22
+      style.render(ctx, size / 2, size / 2, s)
+    }
   }, [style, size])
   return <canvas ref={ref} width={size} height={size} />
 }

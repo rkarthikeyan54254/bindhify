@@ -39,20 +39,25 @@ const BindifyCanvas = forwardRef(function BindifyCanvas(
       if (!selectedStyle || !detection.bindiPoint) return
 
       const isTilak = selectedStyle.id.startsWith('T')
-      const point = isTilak ? detection.tilakPoint : detection.bindiPoint
-      const fx = point.x * canvas.width
-      const fy = point.y * canvas.height + nudge
-      const faceW = detection.faceWidth * canvas.width
-      const baseS = faceW * 0.062 * size
 
-      // Apply face roll rotation so tilak/bindi aligns with the face tilt
-      const roll = detection.rollAngle || 0
-      ctx.save()
-      ctx.translate(fx, fy)
-      ctx.rotate(roll)
-      ctx.translate(-fx, -fy)
-      selectedStyle.render(ctx, fx, fy, baseS, color)
-      ctx.restore()
+      // Draw on every detected face — falls back to just primary if no faces array
+      const allFaces = detection.faces?.length ? detection.faces : [detection]
+
+      allFaces.forEach(face => {
+        const point = isTilak ? face.tilakPoint : face.bindiPoint
+        const fx = point.x * canvas.width
+        const fy = point.y * canvas.height + nudge
+        const faceW = face.faceWidth * canvas.width
+        const baseS = faceW * 0.062 * size
+        const roll = face.rollAngle || 0
+
+        ctx.save()
+        ctx.translate(fx, fy)
+        ctx.rotate(roll)
+        ctx.translate(-fx, -fy)
+        selectedStyle.render(ctx, fx, fy, baseS, color)
+        ctx.restore()
+      })
 
       // ── Watermark ──────────────────────────────────────────────────────────
       const barH   = Math.max(30, Math.round(canvas.height * 0.065))

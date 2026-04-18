@@ -4,6 +4,9 @@ export const BINDIS = [
   {
     id: 'B01', name: 'Classic Round',
     note: 'The timeless everyday bindi, worn across all traditions',
+    detail: 'The round red bindi is the most universally recognised forehead mark in Indian culture. Worn daily by millions of women across every state, it sits at the ajna chakra — the seat of intuition. Traditionally associated with marriage and auspiciousness, today it is worn equally as a cultural statement and fashion choice. Red kumkum, the most common material, is made from turmeric and lime.',
+    regions: 'Pan-India',
+    occasion: 'Daily, weddings, festivals',
     colors: ['#C0392B','#1C1410','#B7791F','#D4527E','#6B21A8'],
     render: (ctx, x, y, s, color = '#C0392B') => {
       ctx.beginPath(); ctx.arc(x, y, s, 0, Math.PI * 2)
@@ -13,6 +16,9 @@ export const BINDIS = [
   {
     id: 'B02', name: 'Teardrop',
     note: 'Popular in South India, associated with classical dance',
+    detail: 'The teardrop bindi — pointed at the top, rounded at the base — is deeply associated with Bharatanatyam and Kuchipudi classical dance traditions. It elongates the forehead and draws the eye upward, creating the dramatic aesthetic of classical South Indian costuming. Off stage, it is popular in Tamil Nadu, Andhra Pradesh, and Kerala as a festive bindi.',
+    regions: 'Tamil Nadu, Andhra Pradesh, Kerala',
+    occasion: 'Classical dance, festivals, weddings',
     colors: ['#8B1A1A','#1C1410','#B7791F','#6B21A8','#166534'],
     render: (ctx, x, y, s, color = '#8B1A1A') => {
       ctx.save(); ctx.translate(x, y); ctx.beginPath()
@@ -25,6 +31,9 @@ export const BINDIS = [
   {
     id: 'B03', name: 'Floral',
     note: 'Modern fashion bindi, common at festive and bridal occasions',
+    detail: 'Floral bindis emerged in the 1980s as decorative stick-on alternatives to traditional paste bindis. Today they are a major fashion category — sold in elaborate sets with matching earring and necklace designs. Most popular for Navratri, Diwali, and weddings, where women often match the bindi colour and design to their saree or lehenga.',
+    regions: 'Pan-India, especially Gujarat and Maharashtra',
+    occasion: 'Navratri, Diwali, weddings, festive',
     colors: ['#D4527E','#C0392B','#7B2FBE','#B7791F','#166534'],
     render: (ctx, x, y, s, color = '#D4527E') => {
       for (let i = 0; i < 6; i++) {
@@ -39,6 +48,9 @@ export const BINDIS = [
   {
     id: 'B04', name: 'Bridal Red',
     note: 'Large red bindi traditionally worn by married Hindu women',
+    detail: 'The large red bridal bindi is one of the most powerful symbols in Hindu matrimonial tradition. Applied as part of the solah shringar (sixteen adornments of a bride), it signals marital status and divine blessing. In many traditions, the bindi is applied by the groom himself during the wedding. The deep red colour symbolises Shakti — feminine power and life force.',
+    regions: 'Pan-India, especially North and East India',
+    occasion: 'Weddings, post-marriage daily wear',
     colors: ['#991B1B','#B7791F','#6B21A8','#1C1410','#1A5276'],
     render: (ctx, x, y, s, color = '#991B1B') => {
       ctx.beginPath(); ctx.arc(x, y, s * 1.1, 0, Math.PI * 2)
@@ -52,6 +64,9 @@ export const BINDIS = [
   {
     id: 'B05', name: 'Crystal Stud',
     note: 'Contemporary style, popular among younger women',
+    detail: 'The crystal or gem-set bindi is a modern evolution that bridges traditional practice with contemporary jewellery. Inspired by maang tikka and nose ring aesthetics, it uses Swarovski crystals, rhinestones, or coloured stones set in adhesive mounts. Particularly popular among diaspora women and at fusion weddings, it makes the bindi accessible to those who want something subtle and wearable in any context.',
+    regions: 'Pan-India, diaspora worldwide',
+    occasion: 'Contemporary daily, parties, fusion events',
     colors: ['#7B2FBE','#1A5276','#D4527E','#166534','#B7791F'],
     render: (ctx, x, y, s, color = '#7B2FBE') => {
       const grd = ctx.createRadialGradient(x, y, 0, x, y, s * 1.2)
@@ -67,6 +82,9 @@ export const BINDIS = [
   {
     id: 'B06', name: 'Chandra Bindi',
     note: 'Marathi crescent bindi — the chandra worn by brides, horns pointing upward',
+    detail: 'The crescent (chandra) bindi is particularly associated with Maharashtrian bridal tradition. The horns point upward toward the sky, symbolising the crescent moon worn by Lord Shiva — an auspicious connection for a new bride. It is traditionally worn alongside the nath (nose ring) and green bangles that are the signature of a Maharashtrian nauvari saree bride.',
+    regions: 'Maharashtra, Goa, parts of Karnataka',
+    occasion: 'Weddings, Ganesh Chaturthi, Gudi Padwa',
     colors: ['#8B1A1A','#C0392B','#B7791F','#6B21A8','#1A5276'],
     render: (ctx, x, y, s, color = '#8B1A1A') => {
       // Offscreen canvas ensures clean cutout regardless of photo background
@@ -91,6 +109,9 @@ export const BINDIS = [
   {
     id: 'B07', name: 'Elongated Leaf',
     note: 'Common in classical Bharatanatyam costuming',
+    detail: 'The elongated leaf or paisley bindi is a staple of classical Indian dance makeup. Its vertical orientation creates a visual extension of the face upward, emphasising the dancer\'s expressions during performance. The shape echoes the mango or paisley motif (kalka) that appears throughout Indian textiles and jewellery. It is also worn in Odissi, Manipuri, and Mohiniattam traditions.',
+    regions: 'Tamil Nadu, Odisha, Kerala, Manipur',
+    occasion: 'Classical dance performances, dance recitals',
     colors: ['#166534','#B7791F','#C0392B','#1A5276','#1C1410'],
     render: (ctx, x, y, s, color = '#166534') => {
       ctx.save(); ctx.translate(x, y); ctx.beginPath()
@@ -103,6 +124,9 @@ export const BINDIS = [
   {
     id: 'B08', name: 'Kundan Cluster',
     note: 'Ornate festive bindi, worn at weddings and pujas',
+    detail: 'The kundan cluster bindi mimics the traditional kundan jewellery technique — uncut gemstones set in gold foil — that originated in Rajasthan and Gujarat. As a bindi, it creates the effect of a forehead jewel without piercing. Multi-piece cluster bindis are sold in elaborate sets and often trail down the centre of the hairline (maang design). They are worn by brides and guests at Rajasthani and Gujarati weddings.',
+    regions: 'Rajasthan, Gujarat, North India',
+    occasion: 'Weddings, sangeet, Navratri',
     colors: ['#B7791F','#C0392B','#6B21A8','#166534','#1A5276'],
     render: (ctx, x, y, s, color = '#B7791F') => {
       [[0, 0, 1.0], [-s*1.05,-s*0.5,0.55],[s*1.05,-s*0.5,0.55],
@@ -118,6 +142,9 @@ export const BINDIS = [
   {
     id: 'B09', name: 'Diamond',
     note: 'Geometric diamond shape, popular in contemporary and Bollywood styles',
+    detail: 'The diamond bindi is a bold geometric shape that emerged from Bollywood costume design and contemporary fashion. Its sharp angles create a striking contrast with the soft curves of the face. Popular in the 1990s and experiencing a revival in modern South Asian fashion, it is often worn with high-drama eye makeup in editorial and stage contexts.',
+    regions: 'Pan-India, Bollywood influence',
+    occasion: 'Stage, editorial, contemporary fashion',
     colors: ['#C0392B','#1C1410','#B7791F','#D4527E','#7B2FBE'],
     render: (ctx, x, y, s, color = '#C0392B') => {
       ctx.save(); ctx.translate(x, y); ctx.beginPath()
@@ -132,6 +159,9 @@ export const BINDIS = [
   {
     id: 'B10', name: 'Lotus',
     note: 'Sacred lotus bindi, symbol of purity and spiritual awakening',
+    detail: 'The lotus (padma) is one of the most sacred symbols in Hinduism, Buddhism, and Jainism — representing spiritual awakening, purity emerging from mud, and the unfolding of consciousness. As a bindi, it carries deep meditative significance. Eight petals represent the eight directions and the ashtadala padma used in temple floor designs. It is a popular choice for puja days and spiritual ceremonies.',
+    regions: 'Pan-India, especially Bengal and Odisha',
+    occasion: 'Puja, Saraswati Puja, Lakshmi Puja, spiritual',
     colors: ['#D4527E','#C0392B','#B7791F','#7B2FBE','#166534'],
     render: (ctx, x, y, s, color = '#D4527E') => {
       for (let i = 0; i < 8; i++) {
@@ -148,6 +178,9 @@ export const BINDIS = [
   {
     id: 'B11', name: 'Star Burst',
     note: 'Radiant star bindi — festive and celebratory style',
+    detail: 'The starburst bindi radiates energy outward from the ajna chakra — visually expressing the idea of inner light shining outward. Popularised in contemporary Indian fashion and at music festivals, it has become a crossover piece worn both within and outside the South Asian community. Gold versions are particularly popular at Diwali celebrations for their association with light, prosperity, and Lakshmi.',
+    regions: 'Pan-India, diaspora worldwide',
+    occasion: 'Diwali, Navratri, festivals, parties',
     colors: ['#B7791F','#C0392B','#D4527E','#7B2FBE','#1A5276'],
     render: (ctx, x, y, s, color = '#B7791F') => {
       const pts = 8
@@ -205,6 +238,9 @@ export const TILAKS = [
   {
     id: 'T01', name: 'Tripundra',
     note: 'Three ash lines of Shaiva tradition — Lord Shiva\'s mark, worn across India',
+    detail: 'The tripundra (tri = three, pundra = mark) is the defining mark of Shaivites — devotees of Lord Shiva. The three horizontal lines of vibhuti (sacred ash) represent the three sacred fires, the three worlds (earth, sky, heaven), and the burning away of ego, attachment, and karma. Made from ash of burnt dried wood or cow dung from a sacrificial fire, it is applied with three middle fingers in a single sweep across the forehead.',
+    regions: 'Pan-India, especially Tamil Nadu, Karnataka, Varanasi',
+    occasion: 'Daily (for devoted Shaivites), Shivaratri, temple visits',
     colors: ['#EFEFEA','#D4C5A9','#9CA3AF'],
     render: (ctx, x, y, s, color = '#EFEFEA') => {
       const lineH = s * 0.52, gap = s * 0.92
@@ -218,6 +254,9 @@ export const TILAKS = [
   {
     id: 'T02', name: 'Tripundra + Dot',
     note: 'Shaivite tripundra with a red kumkum dot — common in Tamil Nadu and Karnataka',
+    detail: 'A regional variation of the tripundra where a red kumkum dot is placed in the centre of the middle ash line. The dot represents the bindu — the point of creation, and the divine energy of Shakti. This combined mark acknowledges both Shiva (ash lines) and Shakti (the red dot), and is the standard tilak seen at Shiva temples across South India, particularly in Tamil Nadu and Karnataka.',
+    regions: 'Tamil Nadu, Karnataka, Andhra Pradesh',
+    occasion: 'Shivaratri, daily for South Indian Shaivites',
     colors: ['#EFEFEA','#D4C5A9'],
     render: (ctx, x, y, s, color = '#EFEFEA') => {
       const lineH = s * 0.52, gap = s * 0.92
@@ -234,6 +273,9 @@ export const TILAKS = [
   {
     id: 'T03', name: 'Sri Vaishnava Namam',
     note: 'Iyengar tilak — two white prongs representing Vishnu\'s feet, red line for Lakshmi',
+    detail: 'The Sri Vaishnava Namam (also called Urdhva Pundra or Srichurnam) is the tilak of Iyengar Brahmins of Tamil Nadu, followers of the Sri Vaishnava tradition of Ramanuja. The two white outer lines (made from white clay) represent the feet of Narayana. The red central line (Srichurnam, made from red turmeric) represents Goddess Lakshmi, through whom devotees approach Narayana. This reflects the core Visishtadvaita philosophy: surrender to Vishnu through Lakshmi.',
+    regions: 'Tamil Nadu, Andhra Pradesh (Iyengar communities)',
+    occasion: 'Daily (for observant Iyengars), Vaikunta Ekadasi, temple',
     colors: ['#EFEFEA','#D4C5A9'],
     render: (ctx, x, y, s, color = '#EFEFEA') => {
       // Anchor = base of mark (just above brow). Pillars grow upward.
@@ -249,6 +291,9 @@ export const TILAKS = [
   {
     id: 'T04', name: 'Madhva Tilak',
     note: 'Madhva Vaishnava sampradaya — two Gopichandana lines with a black yajna-ash centre',
+    detail: 'The Madhva tilak belongs to the Dvaita Vedanta tradition founded by Madhvacharya in 13th century Karnataka. The two white outer lines are made from Gopichandana — the sacred clay from Gopi Kunda lake in Dwarka, Gujarat. The black centre line is made from the coal ash of the daily yajna fire, representing the wearer\'s presence at the sacrificial fire. This tilak is widely worn by Brahmin communities across Karnataka and Udupi.',
+    regions: 'Karnataka, Udupi, Coastal Karnataka',
+    occasion: 'Daily (Madhva Brahmins), Udupi Krishna temple festivals',
     colors: ['#EFEFEA','#D4C5A9'],
     render: (ctx, x, y, s, color = '#EFEFEA') => {
       const pillarW = s * 0.85, pillarH = s * 4.2, gap = s * 0.5
@@ -263,6 +308,9 @@ export const TILAKS = [
   {
     id: 'T05', name: 'Gaudiya / ISKCON',
     note: 'Two Gopichandana lines with a tulsi-leaf arch at the base — Krishna devotion',
+    detail: 'The Gaudiya Vaishnava tilak — worn by ISKCON (Hare Krishna) devotees worldwide — uses two Gopichandana clay lines with a small tulsi leaf shape at the base. Unlike other Vaishnava traditions, there is no coloured centre line: the black line representing Radha was replaced with a tulsi leaf, reflecting the Gaudiya emphasis on approaching Krishna through service, as a tulsi leaf offered at His feet. This tilak is now recognised globally.',
+    regions: 'Bengal, Vrindavan, Mayapur; worldwide through ISKCON',
+    occasion: 'Daily (for initiated devotees), Janmashtami, Ratha Yatra',
     colors: ['#EFEFEA','#D4C5A9'],
     render: (ctx, x, y, s, color = '#EFEFEA') => {
       const pillarW = s * 0.8, pillarH = s * 4.0, gap = s * 0.5
@@ -282,6 +330,9 @@ export const TILAKS = [
   {
     id: 'T06', name: 'Chandan',
     note: 'Single white/yellow sandalwood line — worn across all traditions at temples',
+    detail: 'The chandan (sandalwood) tilak is the most universal mark in Hinduism — applied by priests to devotees at temples across every tradition and region. Made from sandalwood paste (sometimes mixed with camphor, saffron, or turmeric), it has a cooling effect on the ajna chakra and a calming fragrance. It is the default tilak applied when visiting any temple, regardless of the devotee\'s own sect.',
+    regions: 'Pan-India, all traditions',
+    occasion: 'Temple visits, puja, auspicious ceremonies',
     colors: ['#EDD98A','#EFEFEA','#E8C96A'],
     render: (ctx, x, y, s, color = '#EDD98A') => {
       // Tall, gently tapered vertical mark — anchor point (x,y) is the BASE of the mark
@@ -309,6 +360,9 @@ export const TILAKS = [
   {
     id: 'T07', name: 'Shakta Kumkum',
     note: 'Red kumkum mark of Shakta tradition — devotion to Devi, worn across Bengal and beyond',
+    detail: 'The Shakta kumkum tilak is the mark of devotees of the Goddess (Devi) in her many forms — Durga, Kali, Lakshmi, Saraswati. Red kumkum (powdered red turmeric) symbolises Shakti — the divine feminine energy and creative power of the universe. It is applied vertically to represent an upward surge of energy through the chakras. In Bengal, it is applied during Durga Puja as part of the sindoor khela ceremony.',
+    regions: 'Bengal, Assam, Odisha, Kerala, Maharashtra',
+    occasion: 'Durga Puja, Navaratri, Kali Puja, Devi temples',
     colors: ['#CC2222','#B7791F','#8B1A1A'],
     render: (ctx, x, y, s, color = '#CC2222') => {
       ctx.save(); ctx.translate(x, y - s * 0.5)
@@ -322,6 +376,9 @@ export const TILAKS = [
   {
     id: 'T08', name: 'Swaminarayana',
     note: 'Tilak of the Swaminarayana sampradaya — broader U-shape with red centre, popular in Gujarat',
+    detail: 'The Swaminarayana tilak belongs to the Swaminarayana Sampraday founded by Sahajanand Swami in early 19th century Gujarat. Its broader, rounder U-shape distinguishes it from the Sri Vaishnava Namam. The red centre line represents the divine presence of Akshar — the eternal abode of God. Widely worn by Gujarati families globally, this tilak is one of the most commonly seen Vaishnava marks outside India, particularly in the UK, USA, and East Africa.',
+    regions: 'Gujarat, and Gujarati diaspora worldwide',
+    occasion: 'Daily (for followers), BAPS Swaminarayan mandir visits, Diwali',
     colors: ['#EFEFEA','#D4C5A9'],
     render: (ctx, x, y, s, color = '#EFEFEA') => {
       const pillarW = s * 1.1, pillarH = s * 3.8, gap = s * 0.45
