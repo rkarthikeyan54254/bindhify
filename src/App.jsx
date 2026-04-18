@@ -230,10 +230,19 @@ export default function App() {
       const img = new Image()
       img.src = dataUrl
       await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject })
+
+      // Downscale to max 1280px for MediaPipe — large images make faces too small to detect
+      const MAX_DIM = 1280
+      const scale = Math.min(1, MAX_DIM / Math.max(img.width, img.height))
+      const cvs = document.createElement('canvas')
+      cvs.width = Math.round(img.width * scale)
+      cvs.height = Math.round(img.height * scale)
+      cvs.getContext('2d').drawImage(img, 0, 0, cvs.width, cvs.height)
+
       const base64 = dataUrl.split(',')[1]
       const mimeType = file.type || 'image/jpeg'
       const [result, gender] = await Promise.all([
-        detectBindiPoint(img),
+        detectBindiPoint(cvs),
         detectGender(base64, mimeType),
       ])
       if (!result.faceDetected) {
